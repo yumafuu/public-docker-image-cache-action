@@ -24,11 +24,11 @@ runs:
     - name: Save Cache if it doesn't exist
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        docker pull ${{ input.image }}
+        docker pull ${{ inputs.image }}
         mkdir -p docker-cache
-        docker image save ${{ input.image }} --output ./docker-cache/${{ input.image }}.tar
+        docker image save ${{ inputs.image }} --output ./docker-cache/${{ inputs.image }}.tar
 
     - name: Use Image Cache if cache hit
       if: steps.cache.outputs.cache-hit == 'true'
-      run: docker image load --input ./docker-cache/${{ input.image }}.tar
+      run: docker image load --input ./docker-cache/${{ inputs.image }}.tar
 
