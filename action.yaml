@@ -16,7 +16,7 @@ runs:
   steps:
     - name: Restore Image Cache if it exists
       id: cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: docker-cache
         key: cache-docker-${{ inputs.image }}
