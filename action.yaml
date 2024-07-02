@@ -23,6 +23,7 @@ runs:
 
     - name: Save Cache if it doesn't exist
       if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
       run: |
         docker pull ${{ inputs.image }}
         mkdir -p docker-cache
@@ -30,5 +31,5 @@ runs:
 
     - name: Use Image Cache if cache hit
       if: steps.cache.outputs.cache-hit == 'true'
+      shell: bash
       run: docker image load --input ./docker-cache/${{ inputs.image }}.tar
-

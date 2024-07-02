@@ -27,4 +27,3 @@ jobs:
 
 This action is inspired by below question.
 [How to run cached Docker image in Github Action? - Stack Overflow](https://stackoverflow.com/questions/66421411/how-to-run-cached-docker-image-in-github-action)
-# public-docker-image-cache-action
