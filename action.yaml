@@ -1,0 +1,34 @@
+name: Cache Docker Image
+author: YumaFuu
+description: |
+  Build and push a Docker image to Amazon ECR with Buildx cache.
+branding:
+  icon: 'archive'
+  color: gray-dark
+
+inputs:
+  image:
+    required: true
+    type: string
+
+runs:
+  using: composite
+  steps:
+    - name: Restore Image Cache if it exists
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: docker-cache
+        key: cache-docker-${{ inputs.image }}
+
+    - name: Save Cache if it doesn't exist
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        docker pull ${{ input.image }}
+        mkdir -p docker-cache
+        docker image save ${{ input.image }} --output ./docker-cache/${{ input.image }}.tar
+
+    - name: Use Image Cache if cache hit
+      if: steps.cache.outputs.cache-hit == 'true'
+      run: docker image load --input ./docker-cache/${{ input.image }}.tar
+
