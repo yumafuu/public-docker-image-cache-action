@@ -1,0 +1,21 @@
+name: Example
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: YumaFuu/public-docker-image-cache-action@v1
+        with:
+          image: mysql:8.0
+
+      - run: echo "Done"

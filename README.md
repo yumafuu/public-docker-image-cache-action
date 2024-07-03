@@ -6,7 +6,7 @@ This is created for stable image like `mysql:8.0`, `redis:7.2` which is not chan
 
 How many times do you pull `mysql:8.0` image from docker hub in your CI/CD pipeline?
 
-It is very mottainai!
+It is very MOTTAINAI!
 
 ## Usage
 
@@ -25,5 +25,5 @@ jobs:
 
 ## Thanks
 
-This action is inspired by below question.
+This action is inspired by below question. <br>
 [How to run cached Docker image in Github Action? - Stack Overflow](https://stackoverflow.com/questions/66421411/how-to-run-cached-docker-image-in-github-action)
