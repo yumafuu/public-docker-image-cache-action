@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build and Deploy
+    name: Load mysql:8.0
     runs-on: ubuntu-latest
     steps:
       - uses: YumaFuu/public-docker-image-cache-action@v1
