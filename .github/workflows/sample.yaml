@@ -18,6 +18,7 @@ jobs:
         with:
           image: mysql:8.0
 
-      - run: |
-        docker run --name mysql-server -e MYSQL_ROOT_PASSWORD=root -d mysql:8.0
-        docker exec mysql-server mysql -uroot -proot -e "SELECT 'World!' AS Hello;"
+      - name: Hello World
+        run: |
+          docker run --name mysql-server -e MYSQL_ROOT_PASSWORD=root -d mysql:8.0
+          docker exec mysql-server mysql -uroot -proot -e "SELECT 'World!' AS Hello;"
